@@ -3,7 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { TiendaClientMock } from '../clients';
+import { TiendaService } from '../../identificacion/services/tienda.service';
 import {
   CreatePedidoDto,
   ItemPedidoResponseDto,
@@ -19,7 +19,7 @@ export class PedidoService {
   constructor(
     private readonly pedidoRepository: PedidoRepository,
     private readonly productoRepository: ProductoRepository,
-    private readonly tiendaClient: TiendaClientMock,
+    private readonly tiendaClient: TiendaService,
   ) {}
 
   async create(dto: CreatePedidoDto): Promise<PedidoResponseDto> {

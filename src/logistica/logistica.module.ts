@@ -4,8 +4,7 @@ import { Module } from '@nestjs/common';
 import { DatabaseModule } from '../datasources/database.module';
 
 // Clients
-import { TiendaClientMock } from './clients';
-
+import { IdentificacionModule } from '../identificacion/identificacion.module';
 // Repositories
 import {
   CatalogoProductoRepository,
@@ -47,7 +46,7 @@ import {
 import { repositoryProviders } from './repositories/repository.providers';
 
 @Module({
-  imports: [DatabaseModule],
+  imports: [DatabaseModule, IdentificacionModule],
   controllers: [
     CatalogoController,
     ProductoController,
@@ -82,7 +81,6 @@ import { repositoryProviders } from './repositories/repository.providers';
     CatalogoProductoService,
     TenderoService,
     // Mock Clients
-    TiendaClientMock,
   ],
   exports: [
     CatalogoService,

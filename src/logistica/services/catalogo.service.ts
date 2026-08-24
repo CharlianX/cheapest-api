@@ -3,7 +3,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { TiendaClientMock } from '../clients';
+import { TiendaService } from '../../identificacion/services/tienda.service';
 import {
   CatalogoResponseDto,
   CreateCatalogoDto,
@@ -17,7 +17,7 @@ import { Catalogo } from '../repositories/entities';
 export class CatalogoService {
   constructor(
     private readonly catalogoRepository: CatalogoRepository,
-    private readonly tiendaClient: TiendaClientMock,
+    private readonly tiendaClient: TiendaService,
   ) {}
 
   async create(dto: CreateCatalogoDto): Promise<CatalogoResponseDto> {
