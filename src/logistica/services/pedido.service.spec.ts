@@ -1,6 +1,6 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { TiendaClientMock } from '../clients';
+import { TiendaService } from '../clients';
 import { CreatePedidoDto, QueryPedidoDto, UpdatePedidoDto } from '../dtos';
 import { PedidoRepository, ProductoRepository } from '../repositories';
 import { EstadoPedido } from '../repositories/entities';
@@ -10,7 +10,7 @@ describe('PedidoService', () => {
   let service: PedidoService;
   let repository: jest.Mocked<PedidoRepository>;
   let productoRepository: jest.Mocked<ProductoRepository>;
-  let tiendaClient: jest.Mocked<TiendaClientMock>;
+  let tiendaClient: jest.Mocked<TiendaService>;
 
   beforeEach(async () => {
     const mockRepository = {
@@ -41,7 +41,7 @@ describe('PedidoService', () => {
           useValue: mockProductoRepository,
         },
         {
-          provide: TiendaClientMock,
+          provide: TiendaService,
           useValue: mockTiendaClient,
         },
       ],
@@ -50,7 +50,7 @@ describe('PedidoService', () => {
     service = module.get<PedidoService>(PedidoService);
     repository = module.get(PedidoRepository);
     productoRepository = module.get(ProductoRepository);
-    tiendaClient = module.get(TiendaClientMock);
+    tiendaClient = module.get(TiendaService);
   });
 
   it('should be defined', () => {

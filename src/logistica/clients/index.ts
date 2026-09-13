@@ -1,1 +1,1 @@
-export { TiendaClientMock } from './tienda.client.mock';
+export { TiendaService } from '../../identificacion/services/tienda.service';
